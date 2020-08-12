@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="document-editor__toolbar"></div>
+    <div class="editor"></div>
+    <script src="../build/ckeditor.js"></script>
+    <script>
+      DecoupledDocumentEditor.create(document.querySelector(".editor"), {
+        simpleUpload: {
+          uploadUrl: "http://localhost:3000/upload/img",
+        },
+        toolbar: {
+          items: [
+            "heading",
+            "|",
+            "fontSize",
+            "fontFamily",
+            "fontColor",
+            "fontBackgroundColor",
+            "imageUpload",
+            "|",
+            "undo",
+            "redo",
+          ],
+        },
+        language: "zh-cn",
+        fontFamily: {
+          options: [
+            "default",
+            "宋体, Simsun, sans-serif",
+            "黑体, SimHei, sans-serif",
+            "微软雅黑, Microsoft YaHei, sans-serif",
+            "仿宋, FangSong, sans-serif",
+            "楷体, KaiTi, sans-serif",
+            "Arial, Helvetica, sans-serif",
+            "Courier New, Courier, monospace",
+            "Georgia, serif",
+            "Lucida Sans Unicode, Lucida Grande, sans-serif",
+            "Tahoma, Geneva, sans-serif",
+            "Times New Roman, Times, serif",
+          ],
+        },
+        image: {
+          styles: ["alignLeft", "alignCenter", "alignRight"],
+          toolbar: [
+            "imageStyle:alignLeft",
+            "imageStyle:alignCenter",
+            "imageStyle:alignRight",
+          ],
+        },
+      })
+        .then((editor) => {
+          window.editor = editor;
+          document
+            .querySelector(".document-editor__toolbar")
+            .appendChild(editor.ui.view.toolbar.element);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    </script>
+  </body>
+</html>
