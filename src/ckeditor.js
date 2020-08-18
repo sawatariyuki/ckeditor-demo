@@ -87,3 +87,5 @@ Editor.builtinPlugins = [
 ];
 
 export default Editor;
+
+export const vevvvvvvvFunc = (a) => a
